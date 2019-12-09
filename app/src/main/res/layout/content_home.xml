@@ -11,11 +11,38 @@
     <LinearLayout
         android:id="@+id/search_container"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="@dimen/search_box_height"
         android:orientation="horizontal"
+        android:layoutDirection="ltr"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></LinearLayout>
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/search_src_text"
+            android:layout_width="331dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/search_box_inner_margin"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="@string/search_box_text_auto_hint"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            android:lineSpacingExtra="8sp"
+            android:textSize="18sp"
+            android:textStyle="italic"
+            android:typeface="sans"
+            tools:text="@string/search_box_text_placeholder" />
+
+        <ImageButton
+            android:id="@+id/search_button"
+            android:layout_width="@dimen/search_box_button_width"
+            android:layout_height="@dimen/search_box_button_height"
+            android:layout_margin="@dimen/search_box_inner_margin"
+            android:layout_weight="0"
+            app:srcCompat="@android:drawable/ic_menu_search"
+            android:contentDescription="sear" />
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/photo_list"
