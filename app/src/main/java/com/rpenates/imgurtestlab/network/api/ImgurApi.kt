@@ -9,7 +9,7 @@ import com.rpenates.imgurtestlab.network.helpers.PhotoHelper
 class ImgurApi {
 
     suspend fun queryPhotos(stringQuery: String): List<Photo> =
-        Fuel.get("${Routes.imageRoute}/gallery/search/top/day/01?q=${stringQuery}&q_type=jpg")
+        Fuel.get("${Routes.galleryRoute}/search/top/all/01?q=${stringQuery}&q_type=jpg")
             .header(Routes.imgurHeaders)
             .also { println(it) }
             .awaitObject(PhotoHelper.PhotoDeserializer)
