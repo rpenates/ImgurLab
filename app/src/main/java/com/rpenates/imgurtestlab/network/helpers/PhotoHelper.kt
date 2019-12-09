@@ -28,7 +28,12 @@ object PhotoHelper {
             parentAlbumId = "default",
             id = jsonPhoto.getString("id"),
             title = jsonPhoto.getString("title"),
-            photoUrl = getFirstImage(jsonPhoto.getJSONArray("images"))
+            photoUrl = if (jsonPhoto.getBoolean("is_album")){
+                getFirstImage(jsonPhoto.getJSONArray("images"))
+            } else {
+                jsonPhoto.getString("link")
+            }
+
         )
     }
 
