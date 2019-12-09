@@ -6,7 +6,9 @@ object Routes {
 
     val imageRoute = "/image"
 
+    val galleryRoute = "/gallery"
+
     val imgurHeaders = mapOf(
-        "Authorization" to "CLIENT_ID ${BuildConfig.imgur_client_id}"
+        "Authorization" to "Client-ID ${BuildConfig.imgur_client_id}"
     )
 }
