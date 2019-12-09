@@ -17,6 +17,7 @@ buildscript {
         file_picker_version = 'v1.0.19'
         circular_image_view_version = '1.4'
         fontawesome_version ='0.0.5'
+        glide_version = '4.9.0'
     }
 
     repositories {
