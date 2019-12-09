@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">ImgurTestlab</string>
     <string name="title_activity_home">Home</string>
+
+    <!-- Photo item -->
+    <string name="photo_item_image_description">Imgur Image</string>
+
+    <!-- Content home -->
+    <string name="search_box_text_placeholder">Cat memes</string>
+    <string name="search_box_text_auto_hint">Busqueda en Imgur</string>
+    <string name="search_box_button_description">Busqueda</string>
+
+
+    <!-- Common messages -->
+    <string name="empty_textfield">Este campo no debe estar vacio</string>
+    <string name="no_results">Sin resultados 😥</string>
 </resources>
