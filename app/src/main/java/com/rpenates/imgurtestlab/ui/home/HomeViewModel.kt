@@ -1,4 +1,4 @@
-package com.rpenates.imgurtestlab.ui.main
+package com.rpenates.imgurtestlab.ui.home
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -6,7 +6,6 @@ import androidx.lifecycle.viewModelScope
 import com.rpenates.imgurtestlab.data.models.Photo
 import com.rpenates.imgurtestlab.data.repository.PhotoRepository
 import kotlinx.coroutines.Dispatchers.Main
-import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 

@@ -1,4 +1,4 @@
-package com.rpenates.imgurtestlab.ui.main
+package com.rpenates.imgurtestlab.ui.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
