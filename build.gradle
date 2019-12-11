@@ -18,6 +18,7 @@ buildscript {
         circular_image_view_version = '1.4'
         fontawesome_version ='0.0.5'
         glide_version = '4.9.0'
+        loaders_pack_version = '1.2.3'
     }
 
     repositories {
