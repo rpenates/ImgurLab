@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/custom_dialog_layout_height"
+    android:gravity="center_vertical">
+
+    <com.agrawalsuneet.loaderspack.loaders.CurvesLoader
+        android:layout_width="@dimen/animated_widget_width"
+        android:layout_height="@dimen/animated_widget_height"
+        app:curves_animDuration="1000"
+        app:curves_curveColor="@color/colorAccent"
+        app:curves_curveSweepAngle="160"
+        app:curves_curveWidth="2dp"
+        app:curves_distanceBetweenCurves="2dp"
+        app:curves_interpolator="@android:anim/linear_interpolator"
+        app:curves_noOfCurves="3"
+        app:curves_outermostCurveRadius="30dp"
+        android:layout_margin="@dimen/custom_dialog_inner_layout_margin"/>
+
+    <TextView
+        android:id="@+id/dialog_message"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/custom_dialog_message_height"
+        android:layout_marginStart="@dimen/custom_dialog_inner_layout_margin"
+        android:layout_marginEnd="@dimen/custom_dialog_inner_layout_margin"
+        android:gravity="center_vertical"
+        android:text="@string/searching_caption"
+        android:textStyle="italic" />
+
+</LinearLayout>
