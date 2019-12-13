@@ -21,6 +21,9 @@
     <dimen name="photo_item_text_height">60dp</dimen>
     <dimen name="photo_item_icon_size">22sp</dimen>
 
+    <dimen name="photo_item_small_card_width">140dp</dimen>
+    <dimen name="photo_item_small_card_height">140dp</dimen>
+
     <!-- Custom progress Dialog -->
 
     <dimen name="animated_widget_width">50dp</dimen>
