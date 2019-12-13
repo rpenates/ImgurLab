@@ -41,6 +41,8 @@ class Home : AppCompatActivity() {
         setContentView(R.layout.activity_home)
         setSupportActionBar(toolbar)
 
+        action_fab.hide()
+
         viewModel.photosLiveData.observe(this, Observer {
             photo_list.layoutManager = LinearLayoutManager(this)
             listAdapter.photoList = it as ArrayList<Photo>
@@ -58,19 +60,27 @@ class Home : AppCompatActivity() {
         searchDrawable.setTextColor(resources.getColor(R.color.colorAccent))
         search_button.setImageDrawable(searchDrawable)
 
+        val plusDrawable = FontDrawable(this, R.string.fa_plus_solid, true, false)
+        plusDrawable.setTextColor(resources.getColor(R.color.imgurWhite))
+        action_fab.setImageDrawable(plusDrawable)
+
         search_button.setOnClickListener {
             if (search_src_text.text.isEmpty()) {
                 Toast.makeText(this, resources.getString(R.string.empty_textfield), Toast.LENGTH_SHORT).show()
             } else {
                 viewModel.searchPhotos(search_src_text.text.toString())
                 progressDialog.show()
-
+                action_fab.hide()
             }
         }
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+        action_fab.setOnClickListener { _ ->
+            if (viewModel.addToCart(selectorListAdapter.photoList)) {
+                println("Items added to cart")
+            } else {
+                println("No items")
+                Toast.makeText(this, resources.getString(R.string.cart_no_selection), Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -87,10 +97,15 @@ class Home : AppCompatActivity() {
     }
 
     private fun renderInCartMode() {
-        photo_list.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
-        selectorListAdapter.photoList = viewModel.photosLiveData.value as ArrayList<Photo>
-        photo_list.adapter = selectorListAdapter
-        selectorListAdapter.notifyDataSetChanged()
+        if (!viewModel.photosLiveData.value.isNullOrEmpty()) {
+            selectorListAdapter.photoList = viewModel.photosLiveData.value as ArrayList<Photo>
+            photo_list.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
+            photo_list.adapter = selectorListAdapter
+            selectorListAdapter.notifyDataSetChanged()
+            action_fab.show()
+        } else {
+            Toast.makeText(this, resources.getString(R.string.no_results), Toast.LENGTH_SHORT).show()
+        }
     }
 
 
