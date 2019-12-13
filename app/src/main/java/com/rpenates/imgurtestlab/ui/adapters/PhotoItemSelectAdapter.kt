@@ -21,7 +21,20 @@ class PhotoItemSelectAdapter: RecyclerView.Adapter<PhotoItemSelectViewHolder>() 
 
     override fun onBindViewHolder(holder: PhotoItemSelectViewHolder, position: Int) {
         var photo = photoList[position]
-        holder?.renderWithPhoto(photo)
+        holder.photoCheckBox.tag = position
+        holder.renderWithPhoto(photo)
+        holder.photoCheckBox.setOnCheckedChangeListener { buttonView, isChecked ->
+            val position = holder.photoCheckBox.tag
+            val selected = photoList[(position as Int)]
+            if (isChecked) {
+                selected.isSelected = true
+                println("Photo with id: ${selected.id} has been selected")
+            } else {
+                selected.isSelected = false
+                println("Photo with id: ${selected.id} has been deselected")
+            }
+        }
     }
+
 
 }
