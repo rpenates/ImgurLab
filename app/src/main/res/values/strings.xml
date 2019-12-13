@@ -16,4 +16,5 @@
     <string name="empty_textfield">Este campo no debe estar vacio</string>
     <string name="no_results">Sin resultados 😥</string>
     <string name="searching_caption">Buscando imagenes...</string>
+    <string name="cart_no_selection">Sin imagenes seleccionadas 😑</string>
 </resources>
