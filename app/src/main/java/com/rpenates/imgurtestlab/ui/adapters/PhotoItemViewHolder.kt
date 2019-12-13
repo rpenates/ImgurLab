@@ -20,6 +20,7 @@ class PhotoItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         } else {
             Glide.with(itemView)
                 .load(photo.photoUrl)
+                .centerCrop()
                 .into(imgurImage)
         }
     }
