@@ -40,8 +40,9 @@
             android:layout_height="@dimen/search_box_button_height"
             android:layout_margin="@dimen/search_box_inner_margin"
             android:layout_weight="0"
+            android:background="@null"
             app:srcCompat="@android:drawable/ic_menu_search"
-            android:contentDescription="sear" />
+            tools:ignore="ContentDescription" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
