@@ -12,6 +12,9 @@ import kotlinx.android.synthetic.main.photo_item_layout.view.*
 class PhotoItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
     private val imgurImage: ImageView = itemView.findViewById(R.id.imgur_photo)
     private val imgurTitle: TextView = itemView.findViewById(R.id.imgur_title)
+    private val imgurViews: TextView = itemView.findViewById(R.id.text_views)
+    private val imgurUpvotes: TextView = itemView.findViewById(R.id.text_upvote)
+    private val imgurDownvotes: TextView = itemView.findViewById(R.id.text_downvote)
 
     fun renderWithPhoto(photo: Photo) {
         imgurTitle.text = photo.title
@@ -23,5 +26,8 @@ class PhotoItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
                 .centerCrop()
                 .into(imgurImage)
         }
+        imgurViews.text = photo.views.toString()
+        imgurUpvotes.text = photo.upvotes.toString()
+        imgurDownvotes.text = photo.downvotes.toString()
     }
 }

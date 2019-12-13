@@ -13,7 +13,10 @@ data class Photo (
     @PrimaryKey val id: String,
     val parentAlbumId: String,
     val photoUrl: String,
-    val title: String
+    val title: String,
+    val upvotes: Int,
+    val downvotes: Int,
+    val views: Int
 ) {
     override fun toString(): String {
         return "Photo(id='$id', parentAlbumId='$parentAlbumId', photoUrl='$photoUrl', title='$title')"

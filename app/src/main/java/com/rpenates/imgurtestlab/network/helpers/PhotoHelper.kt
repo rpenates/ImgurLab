@@ -32,7 +32,10 @@ object PhotoHelper {
                 getFirstImage(jsonPhoto.getJSONArray("images"))
             } else {
                 jsonPhoto.getString("link")
-            }
+            },
+            upvotes = jsonPhoto.getInt("ups"),
+            downvotes = jsonPhoto.getInt("downs"),
+            views = jsonPhoto.getInt("views")
 
         )
     }

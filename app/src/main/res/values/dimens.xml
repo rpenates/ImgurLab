@@ -9,14 +9,17 @@
     <dimen name="search_box_inner_margin">5dp</dimen>
 
     <!-- Photo item -->
-    <dimen name="photo_item_height">120dp</dimen>
+    <dimen name="photo_item_height">450dp</dimen>
     <dimen name="photo_item_image_width">110dp</dimen>
-    <dimen name="photo_item_text_margin_start">120dp</dimen>
+    <dimen name="photo_item_text_margin_bottom">100dp</dimen>
     <dimen name="photo_item_image_height">110dp</dimen>
     <dimen name="photo_item_layout_margin">5dp</dimen>
     <dimen name="photo_item_card_elevation">5dp</dimen>
     <dimen name="photo_item_corner_radius">10dp</dimen>
     <dimen name="photo_item_outside_margin">6dp</dimen>
+
+    <dimen name="photo_item_text_height">60dp</dimen>
+    <dimen name="photo_item_icon_size">22sp</dimen>
 
     <!-- Custom progress Dialog -->
 
@@ -26,5 +29,6 @@
     <dimen name="custom_dialog_corner_radius">15dp</dimen>
     <dimen name="custom_dialog_inner_layout_margin">10dp</dimen>
     <dimen name="custom_dialog_message_height">30dp</dimen>
+
 
 </resources>
