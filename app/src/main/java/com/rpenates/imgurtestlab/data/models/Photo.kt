@@ -18,6 +18,7 @@ data class Photo (
     val downvotes: Int,
     val views: Int
 ) {
+    var isSelected: Boolean = false
     override fun toString(): String {
         return "Photo(id='$id', parentAlbumId='$parentAlbumId', photoUrl='$photoUrl', title='$title')"
     }
