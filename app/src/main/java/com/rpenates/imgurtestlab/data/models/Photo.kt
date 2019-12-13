@@ -4,11 +4,7 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "photos",
-    foreignKeys = [ForeignKey(entity = Album::class,
-        parentColumns = ["id"],
-        childColumns = ["parentAlbumId"],
-        onDelete = ForeignKey.CASCADE)])
+@Entity(tableName = "photos")
 data class Photo (
     @PrimaryKey val id: String,
     val parentAlbumId: String,
