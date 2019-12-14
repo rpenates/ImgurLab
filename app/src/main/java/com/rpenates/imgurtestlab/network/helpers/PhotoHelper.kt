@@ -25,7 +25,6 @@ object PhotoHelper {
 
     fun decodePhoto(jsonPhoto: JSONObject) : Photo {
         return Photo(
-            parentAlbumId = "default",
             id = jsonPhoto.getString("id"),
             title = jsonPhoto.getString("title"),
             photoUrl = if (jsonPhoto.getBoolean("is_album")){

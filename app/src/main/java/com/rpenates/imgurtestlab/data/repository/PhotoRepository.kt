@@ -11,8 +11,6 @@ class PhotoRepository private  constructor(
 
     fun getPhoto(photoId: String) = photoDao.getPhoto(photoId)
 
-    fun getPhotosByAlbum(albumId: String) = photoDao.getPhotosByAlbum(albumId)
-
     fun getAllPhotos() = photoDao.getAllPhotos()
 
     suspend fun searchPhotos(searchQuery: String): List<Photo> = imgurApi.queryPhotos(searchQuery)

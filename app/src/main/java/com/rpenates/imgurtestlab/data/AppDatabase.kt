@@ -5,21 +5,17 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.rpenates.imgurtestlab.core.AppConfig.DATABASE_NAME
-import com.rpenates.imgurtestlab.data.dao.AlbumDao
 import com.rpenates.imgurtestlab.data.dao.PhotoDao
-import com.rpenates.imgurtestlab.data.models.Album
 import com.rpenates.imgurtestlab.data.models.Photo
 
 @Database(
     entities = [
-        Album::class,
         Photo::class
     ],
     version = 1,
     exportSchema = false)
 abstract class AppDatabase: RoomDatabase() {
 
-    abstract fun albumDao(): AlbumDao
     abstract fun photoDao(): PhotoDao
 
 

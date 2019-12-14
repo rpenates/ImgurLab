@@ -6,9 +6,6 @@ import com.rpenates.imgurtestlab.data.models.Photo
 @Dao
 interface PhotoDao {
 
-    @Query("SELECT * FROM photos WHERE parentAlbumId = :albumId")
-    fun getPhotosByAlbum(albumId: String): List<Photo>
-
     @Query("SELECT * FROM photos WHERE id = :photoId")
     fun getPhoto(photoId: String): Photo
 
