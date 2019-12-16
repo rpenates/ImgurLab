@@ -4,6 +4,7 @@ import android.content.Context
 import com.rpenates.imgurtestlab.data.AppDatabase
 import com.rpenates.imgurtestlab.data.repository.PhotoRepository
 import com.rpenates.imgurtestlab.network.api.ImgurApi
+import com.rpenates.imgurtestlab.ui.cart.CartActivityViewModelFactory
 import com.rpenates.imgurtestlab.ui.home.HomeViewModelFactory
 
 object DI {
@@ -19,5 +20,8 @@ object DI {
         return HomeViewModelFactory(repository)
     }
 
-    // TODO: implement album dependency injection
+    fun provideCartActivityViewModelFactory(context: Context): CartActivityViewModelFactory {
+        val repository = getPhotorepository(context)
+        return CartActivityViewModelFactory(repository)
+    }
 }
