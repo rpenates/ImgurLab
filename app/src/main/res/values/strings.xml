@@ -10,11 +10,17 @@
     <string name="search_box_text_auto_hint">Busqueda en Imgur</string>
     <string name="search_box_button_description">Busqueda</string>
     <string name="home_menu_cart_item">Carrito</string>
+    <string name="home_menu_select_item">Seleccion</string>
+    <string name="home_cart_photos_added">Imagenes agregadas al carrito</string>
 
+    <!-- Content Cart -->
+    <string name="cart_title">Carrito de imagenes</string>
 
     <!-- Common messages -->
     <string name="empty_textfield">Este campo no debe estar vacio</string>
     <string name="no_results">Sin resultados 😥</string>
     <string name="searching_caption">Buscando imagenes...</string>
     <string name="cart_no_selection">Sin imagenes seleccionadas 😑</string>
+    <string name="show_message">Mostrar</string>
+    <string name="title_activity_detail_cart">DetailCart</string>
 </resources>
