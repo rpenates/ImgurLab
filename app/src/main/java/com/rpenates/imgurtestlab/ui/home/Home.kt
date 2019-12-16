@@ -1,8 +1,11 @@
 package com.rpenates.imgurtestlab.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.inputmethod.EditorInfo
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -15,16 +18,20 @@ import com.rpenates.imgurtestlab.core.DI
 import com.rpenates.imgurtestlab.data.models.Photo
 import com.rpenates.imgurtestlab.ui.adapters.PhotoItemAdapter
 import com.rpenates.imgurtestlab.ui.adapters.PhotoItemSelectAdapter
+import com.rpenates.imgurtestlab.ui.cart.CartActivity
 import com.rpenates.imgurtestlab.ui.dialogs.CustomProgressDialog
 import info.androidhive.fontawesome.FontDrawable
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.content_home.*
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.concurrent.schedule
+
 
 class Home : AppCompatActivity() {
 
     private lateinit var viewModel: HomeViewModel
     private lateinit var progressDialog: CustomProgressDialog
-    private val selectedItems = ArrayList<Photo>()
 
     private var listAdapter = PhotoItemAdapter()
     private var selectorListAdapter = PhotoItemSelectAdapter()
@@ -58,11 +65,25 @@ class Home : AppCompatActivity() {
 
         val searchDrawable = FontDrawable(this, R.string.fa_search_solid, true, false)
         searchDrawable.setTextColor(resources.getColor(R.color.colorAccent))
+        searchDrawable.textSize = 22f
         search_button.setImageDrawable(searchDrawable)
 
         val plusDrawable = FontDrawable(this, R.string.fa_plus_solid, true, false)
         plusDrawable.setTextColor(resources.getColor(R.color.imgurWhite))
         action_fab.setImageDrawable(plusDrawable)
+
+        search_src_text.setOnEditorActionListener(TextView.OnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                if (search_src_text.text.isEmpty()) {
+                    Toast.makeText(this, resources.getString(R.string.empty_textfield), Toast.LENGTH_SHORT).show()
+                } else {
+                    viewModel.searchPhotos(search_src_text.text.toString())
+                    progressDialog.show()
+                    action_fab.hide()
+                }
+            }
+            return@OnEditorActionListener false
+        })
 
         search_button.setOnClickListener {
             if (search_src_text.text.isEmpty()) {
@@ -74,9 +95,18 @@ class Home : AppCompatActivity() {
             }
         }
 
-        action_fab.setOnClickListener { _ ->
+        action_fab.setOnClickListener { view ->
             if (viewModel.addToCart(selectorListAdapter.photoList)) {
                 println("Items added to cart")
+
+                Snackbar.make(view, resources.getString(R.string.home_cart_photos_added), Snackbar.LENGTH_LONG)
+                    .setAction(resources.getString(R.string.show_message)) {
+                        val cartIntent = Intent(this@Home,  CartActivity::class.java)
+                        startActivity(cartIntent)
+                    }.show()
+                Timer("launchCart", false).schedule(500) {
+
+                }
             } else {
                 println("No items")
                 Toast.makeText(this, resources.getString(R.string.cart_no_selection), Toast.LENGTH_SHORT).show()
@@ -90,8 +120,16 @@ class Home : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId == R.id.action_cart_mode) {
-            renderInCartMode()
+
+        when (item.itemId) {
+            R.id.action_cart_mode -> {
+                renderInCartMode()
+            }
+            R.id.action_show_cart -> {
+                val cartIntent = Intent(this@Home, CartActivity::class.java)
+                startActivity(cartIntent)
+            }
+            else -> println("No action found")
         }
         return true
     }
